@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Épreuve E6</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+.e6-page{
+max-width:1100px;
+margin:0 auto;
+padding:120px 20px 80px;
+}
+
+.e6-hero{
+text-align:center;
+margin-bottom:60px;
+}
+
+.e6-hero h1{
+font-size:4rem;
+margin-bottom:25px;
+color:#58a6ff;
+}
+
+.e6-hero p{
+max-width:850px;
+margin:auto;
+font-size:1.2rem;
+line-height:1.9;
+color:#b8c1cc;
+margin-bottom:20px;
+}
+
+.e6-badge{
+display:inline-block;
+margin-top:12px;
+padding:12px 22px;
+background:#161b22;
+border:1px solid #30363d;
+border-radius:14px;
+color:#f0f6fc;
+font-size:1rem;
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+.e6-section{
+position:relative;
+background:rgba(22, 27, 34, 0.88);
+border:1px solid #30363d;
+border-radius:24px;
+padding:40px;
+margin-bottom:90px;
+box-shadow:0 8px 24px rgba(0,0,0,0.18);
+transition:0.3s;
+backdrop-filter:blur(4px);
+}
+
+.e6-section:hover{
+border-color:#58a6ff;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.18),
+0 0 20px rgba(88,166,255,0.08),
+0 14px 32px rgba(0,0,0,0.3);
+}
+
+.e6-section h2{
+font-size:2.2rem;
+margin-bottom:18px;
+color:#58a6ff;
+}
+
+.e6-section p{
+font-size:1.08rem;
+line-height:1.9;
+color:#b8c1cc;
+margin-bottom:14px;
+}
+
+.e6-docs{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.e6-doc-card{
+display:block;
+background:linear-gradient(180deg, rgba(22,27,34,0.96), rgba(13,17,23,0.96));
+border:1px solid #30363d;
+border-radius:22px;
+padding:30px;
+text-decoration:none;
+color:inherit;
+transition:0.3s;
+box-shadow:0 10px 26px rgba(0,0,0,0.18);
+position:relative;
+overflow:hidden;
+}
+
+/* effet reflet */
+
+.e6-doc-card::before{
+content:"";
+position:absolute;
+top:-40%;
+left:-40%;
+width:80%;
+height:180%;
+background:linear-gradient(
+120deg,
+transparent 0%,
+rgba(255,255,255,0.03) 45%,
+rgba(255,255,255,0.06) 50%,
+rgba(255,255,255,0.03) 55%,
+transparent 100%
+);
+transform:rotate(12deg);
+transition:transform 0.8s ease;
+pointer-events:none;
+}
+
+.e6-doc-card:hover::before{
+transform:translateX(180%) rotate(12deg);
+}
+
+/* hover */
+
+.e6-doc-card:hover{
+transform:translateY(-6px);
+border-color:#58a6ff;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.22),
+0 0 20px rgba(88,166,255,0.09),
+0 14px 34px rgba(0,0,0,0.28);
+}
+
+/* icône */
+
+.e6-doc-card i{
+font-size:2rem;
+color:#58a6ff;
+margin-bottom:16px;
+display:block;
+}
+
+/* titre */
+
+.e6-doc-card h3{
+font-size:1.35rem;
+margin-bottom:12px;
+color:#f0f6fc;
+}
+
+/* texte */
+
+.e6-doc-card p{
+font-size:1rem;
+line-height:1.75;
+color:#b8c1cc;
+margin:0;
+}
+
+/* petit texte bas */
+
+.e6-doc-card span{
+display:inline-block;
+margin-top:14px;
+font-size:0.95rem;
+color:#58a6ff;
+}
+
+@media (max-width:900px){
+
+.e6-page{
+padding:100px 20px 60px;
+}
+
+.e6-hero h1{
+font-size:3rem;
+}
+
+.e6-hero p{
+font-size:1.05rem;
+}
+
+.e6-section{
+padding:25px;
+}
+
+.e6-section h2{
+font-size:1.8rem;
+}
+
+}
+
+.e6-section + .e6-section::before{
+content:"";
+position:absolute;
+top:-45px;
+left:50%;
+transform:translateX(-50%);
+width:180px;
+height:2px;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(88,166,255,0.9),
+transparent
+);
+box-shadow:
+0 0 8px rgba(88,166,255,0.35),
+0 0 18px rgba(88,166,255,0.18);
+border-radius:999px;
+}
+
+.e6-label{
+display:inline-block;
+margin-bottom:16px;
+padding:8px 14px;
+border-radius:999px;
+font-size:0.95rem;
+font-weight:600;
+letter-spacing:0.3px;
+color:#dbeafe;
+background:rgba(31,111,235,0.16);
+border:1px solid rgba(88,166,255,0.28);
+box-shadow:0 0 12px rgba(88,166,255,0.08);
+}
+
+.e6-section:nth-of-type(1){
+background:linear-gradient(180deg, rgba(22,27,34,0.92), rgba(22,27,34,0.82));
+}
+
+.e6-section:nth-of-type(2){
+background:linear-gradient(180deg, rgba(18,24,32,0.95), rgba(22,27,34,0.82));
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="network-bg"></canvas>
+
+<header>
+    
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    
+        <div class="header-center">
+            <a href="index.html" class="home-btn">
+                <i class="fa-solid fa-house"></i> Accueil
+            </a>
+    
+            <div class="header-title">Portfolio BTS SIO</div>
+        </div>
+    
+    </header>
+
+<div class="menu" id="menu">
+
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="parc.html">Gestion de parc</a></li>
+<li><a href="veille.html">Veille technologique</a></li>
+<li class="submenu-parent">
+
+    <div class="submenu-head">
+        <a href="e5.html" class="submenu-title">Epreuve E5</a>
+        <i class="fa-solid fa-chevron-down submenu-arrow" onclick="toggleSubmenu()"></i>
+    </div>
+
+    <ul class="submenu" id="submenu-e5">
+        <li><a href="e5-patrimoine.html">Gérer le patrimoine informatique</a></li>
+        <li><a href="e5-support.html">Répondre aux incidents et aux demandes d’assistance</a></li>
+        <li><a href="e5-developpement.html">Développer la présence en ligne</a></li>
+        <li><a href="e5-modeprojet.html">Travailler en mode projet</a></li>
+        <li><a href="e5-dispo-utilisateurs.html">Mettre à disposition des utilisateurs un service</a></li>
+        <li><a href="e5-dev-pro.html">Organiser son développement professionnel</a></li>
+    </ul>
+
+</li>
+<li><a href="e6.html">Epreuve E6</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</div>
+
+<div class="e6-page">
+
+<div class="e6-hero">
+<h1>Épreuve E6</h1>
+
+<p>
+Cette page présente les deux situations professionnelles réalisées dans le cadre de l’épreuve E6 du BTS SIO option SISR.
+Chaque situation dispose d’un dossier de présentation et d’une documentation technique.
+</p>
+
+<div class="e6-badge">
+Option : <strong>SISR</strong>
+</div>
+</div>
+
+<section class="e6-section">
+<span class="e6-label">Situation professionnelle 1</span>  
+<h2>Infrastructure réseau et sécurisation avec pfSense</h2>
+
+<p>
+Cette situation professionnelle porte sur la mise en place et la sécurisation d’une infrastructure réseau
+dans le contexte de l’entreprise CréaBois, avec l’utilisation de pfSense pour la gestion du pare-feu
+et du contrôle des accès réseau.
+</p>
+
+<p>
+Elle présente le besoin initial, les choix réalisés, ainsi que les solutions mises en œuvre
+pour répondre aux contraintes techniques et de sécurité.
+</p>
+
+<div class="e6-docs">
+<a href="documents/e6/situation1-presentation.pdf" class="e6-doc-card" target="_blank">
+<i class="fa-solid fa-file-lines"></i>
+<h3>Dossier de présentation</h3>
+<p>Présentation complète de la situation : contexte, analyse du besoin, objectifs et choix techniques.</p>
+<span>Voir le document</span>
+</a>
+
+<a href="documents/e6/situation1-technique.pdf" class="e6-doc-card" target="_blank">
+<i class="fa-solid fa-screwdriver-wrench"></i>
+<h3>Documentation technique</h3>
+<p>Documentation détaillée de la mise en œuvre technique : installation,
+configuration, paramétrage et étapes de réalisation.</p>
+<span>Voir le document</span>
+</a>
+</div>
+</section>
+
+<section class="e6-section">
+<span class="e6-label">Situation professionnelle 2</span>
+<h2>Supervision des machines virtualisées avec Zabbix</h2>
+
+
+<p>
+Cette situation professionnelle concerne la mise en place d’un serveur de supervision Zabbix
+sur machine virtuelle afin d’assurer la surveillance de l’ensemble des machines virtualisées.
+</p>
+
+<p>
+Elle met en avant la démarche suivie pour répondre au besoin de supervision,
+ainsi que les choix techniques effectués pour mettre en place une solution adaptée.
+</p>
+
+<div class="e6-docs">
+<a href="documents/e6/situation2-presentation.pdf" class="e6-doc-card" target="_blank">
+<i class="fa-solid fa-file-lines"></i>
+<h3>Dossier de présentation</h3>
+<p>Présentation de la situation : contexte, besoin, objectifs, réflexion menée
+et explication générale de la solution retenue.</p>
+<span>Voir le document</span>
+</a>
+
+<a href="documents/e6/situation2-technique.pdf" class="e6-doc-card" target="_blank">
+<i class="fa-solid fa-screwdriver-wrench"></i>
+<h3>Documentation technique</h3>
+<p>Documentation technique de la solution : installation de Zabbix,
+configuration de la supervision et éléments de mise en œuvre.</p>
+<span>Voir le document</span>
+</a>
+</div>
+</section>
+
+</div>
+
+<footer class="site-footer">
+
+<div class="footer-glow-line"></div>
+
+<div class="footer-container">
+
+<div class="footer-column">
+<h3>Portfolio BTS SIO</h3>
+<p>
+Étudiant en BTS SIO option SISR (Solutions d’Infrastructure, Systèmes et Réseaux).
+Je développe des compétences en administration système, réseau et cybersécurité
+à travers différents projets réalisés en formation.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>Navigation</h3>
+
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="parc.html">Gestion de parc</a></li>
+<li><a href="veille.html">Veille technologique</a></li>
+<li><a href="e5.html">Épreuve E5</a></li>
+<li><a href="e6.html">Épreuve E6</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</div>
+
+<div class="footer-column">
+<h3>Contact</h3>
+
+<p class="footer-contact">
+<i class="fa-solid fa-envelope"></i>
+tonmail@example.com
+</p>
+
+<p class="footer-contact">
+<i class="fa-brands fa-github"></i>
+github.com/tonprofil
+</p>
+
+<p class="footer-contact">
+<i class="fa-solid fa-location-dot"></i>
+France
+</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Portfolio BTS SIO — Tous droits réservés</p>
+</div>
+
+</footer>
+
+<script src="js/menu.js"></script>
+<script src="js/network-bg.js"></script>
+
+</body>
+</html>

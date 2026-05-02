@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille technologique - Portfolio BTS SIO</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+.veille-page{
+max-width:1100px;
+margin:0 auto;
+padding:120px 20px 80px;
+position:relative;
+z-index:2;
+}
+
+.veille-hero{
+text-align:center;
+margin-bottom:55px;
+}
+
+.veille-badge{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:10px 18px;
+margin-bottom:24px;
+border-radius:999px;
+background:rgba(22,27,34,0.85);
+border:1px solid rgba(88,166,255,0.22);
+color:#dbeafe;
+font-size:0.95rem;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.06),
+0 8px 24px rgba(0,0,0,0.18);
+backdrop-filter:blur(6px);
+}
+
+.veille-badge i{
+color:#58a6ff;
+}
+
+.veille-hero h1{
+font-size:4rem;
+margin-bottom:22px;
+color:#58a6ff;
+text-shadow:0 0 18px rgba(88,166,255,0.10);
+}
+
+.veille-hero p{
+max-width:820px;
+margin:0 auto;
+font-size:1.15rem;
+line-height:1.9;
+color:#b8c1cc;
+}
+
+.veille-summary{
+display:grid;
+grid-template-columns:repeat(4, 1fr);
+gap:18px;
+margin:40px 0 50px;
+}
+
+.summary-card{
+background:linear-gradient(180deg, rgba(22,27,34,0.96), rgba(13,17,23,0.96));
+border:1px solid #30363d;
+border-radius:20px;
+padding:22px;
+text-align:center;
+box-shadow:0 10px 24px rgba(0,0,0,0.18);
+transition:0.3s;
+}
+
+.summary-card:hover{
+transform:translateY(-4px);
+border-color:#58a6ff;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.18),
+0 0 18px rgba(88,166,255,0.08),
+0 12px 28px rgba(0,0,0,0.24);
+}
+
+.summary-card i{
+font-size:1.7rem;
+color:#58a6ff;
+margin-bottom:12px;
+display:block;
+}
+
+.summary-card h3{
+font-size:1.05rem;
+margin:0;
+color:#f0f6fc;
+line-height:1.5;
+}
+
+.veille-section{
+position:relative;
+overflow:hidden;
+background:linear-gradient(180deg, rgba(22,27,34,0.96), rgba(13,17,23,0.96));
+border:1px solid #30363d;
+border-radius:26px;
+padding:36px;
+margin-bottom:30px;
+box-shadow:0 12px 30px rgba(0,0,0,0.20);
+}
+
+.veille-section::before{
+content:"";
+position:absolute;
+top:-40%;
+left:-40%;
+width:80%;
+height:180%;
+background:linear-gradient(
+120deg,
+transparent 0%,
+rgba(255,255,255,0.02) 45%,
+rgba(255,255,255,0.05) 50%,
+rgba(255,255,255,0.02) 55%,
+transparent 100%
+);
+transform:rotate(12deg);
+pointer-events:none;
+}
+
+.veille-section h2{
+font-size:2rem;
+margin-bottom:18px;
+color:#58a6ff;
+}
+
+.veille-section p{
+font-size:1.05rem;
+line-height:1.9;
+color:#b8c1cc;
+margin-bottom:14px;
+}
+
+.veille-section ul{
+padding-left:22px;
+margin:10px 0 0;
+}
+
+.veille-section li{
+font-size:1rem;
+line-height:1.8;
+color:#b8c1cc;
+margin-bottom:10px;
+}
+
+.veille-grid{
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:25px;
+margin-top:24px;
+}
+
+.veille-card{
+position:relative;
+overflow:hidden;
+background:rgba(13,17,23,0.92);
+border:1px solid #30363d;
+border-radius:22px;
+padding:26px;
+box-shadow:0 10px 24px rgba(0,0,0,0.16);
+transition:0.3s;
+}
+
+.veille-card:hover{
+transform:translateY(-5px);
+border-color:#58a6ff;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.18),
+0 0 18px rgba(88,166,255,0.08),
+0 12px 28px rgba(0,0,0,0.24);
+}
+
+.veille-card i{
+font-size:1.9rem;
+color:#58a6ff;
+margin-bottom:14px;
+display:block;
+}
+
+.veille-card h3{
+font-size:1.3rem;
+margin-bottom:14px;
+color:#f0f6fc;
+}
+
+.veille-card p{
+font-size:1rem;
+line-height:1.8;
+color:#b8c1cc;
+margin:0;
+}
+
+.sources-grid{
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:25px;
+margin-top:25px;
+}
+
+.source-card{
+background:rgba(13,17,23,0.92);
+border:1px solid #30363d;
+border-radius:22px;
+padding:26px;
+box-shadow:0 10px 24px rgba(0,0,0,0.16);
+transition:0.3s;
+}
+
+.source-card:hover{
+transform:translateY(-5px);
+border-color:#58a6ff;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.18),
+0 0 18px rgba(88,166,255,0.08),
+0 12px 28px rgba(0,0,0,0.24);
+}
+
+.source-card i{
+font-size:1.9rem;
+color:#58a6ff;
+margin-bottom:14px;
+display:block;
+}
+
+.source-card h3{
+font-size:1.3rem;
+margin-bottom:12px;
+color:#f0f6fc;
+}
+
+.source-card p{
+font-size:1rem;
+line-height:1.8;
+color:#b8c1cc;
+margin:0;
+}
+
+.veille-conclusion{
+background:linear-gradient(135deg, rgba(16,75,141,0.20), rgba(31,111,235,0.14));
+border:1px solid rgba(88,166,255,0.24);
+border-radius:26px;
+padding:34px;
+box-shadow:0 12px 30px rgba(0,0,0,0.20);
+}
+
+.veille-conclusion h2{
+font-size:2rem;
+margin-bottom:16px;
+color:#79c0ff;
+}
+
+.veille-conclusion p{
+font-size:1.05rem;
+line-height:1.9;
+color:#d0d7de;
+margin-bottom:14px;
+}
+
+@media (max-width:950px){
+.veille-summary{
+grid-template-columns:repeat(2, 1fr);
+}
+
+.veille-grid{
+grid-template-columns:1fr;
+}
+
+.sources-grid{
+grid-template-columns:1fr;
+}
+
+.veille-hero h1{
+font-size:3rem;
+}
+}
+
+@media (max-width:600px){
+.veille-page{
+padding:100px 20px 60px;
+}
+
+.veille-hero h1{
+font-size:2.5rem;
+}
+
+.veille-hero p{
+font-size:1.04rem;
+}
+
+.veille-summary{
+grid-template-columns:1fr;
+}
+
+.veille-section,
+.veille-conclusion{
+padding:26px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="network-bg"></canvas>
+
+<header>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<div class="header-center">
+<a href="index.html" class="home-btn">
+<i class="fa-solid fa-house"></i> Accueil
+</a>
+<div class="header-title">Portfolio BTS SIO</div>
+</div>
+
+</header>
+
+<div class="menu" id="menu">
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="parc.html">Gestion de parc</a></li>
+<li><a href="veille.html">Veille technologique</a></li>
+<li class="submenu-parent">
+<div class="submenu-head">
+<a href="e5.html" class="submenu-title">Epreuve E5</a>
+<i class="fa-solid fa-chevron-down submenu-arrow" onclick="toggleSubmenu()"></i>
+</div>
+<ul class="submenu" id="submenu-e5">
+<li><a href="e5-patrimoine.html">Gérer le patrimoine informatique</a></li>
+<li><a href="e5-support.html">Répondre aux incidents et aux demandes d’assistance</a></li>
+<li><a href="e5-developpement.html">Développer la présence en ligne</a></li>
+<li><a href="e5-modeprojet.html">Travailler en mode projet</a></li>
+<li><a href="e5-dispo-utilisateurs.html">Mettre à disposition des utilisateurs un service</a></li>
+<li><a href="e5-dev-pro.html">Organiser son développement professionnel</a></li>
+</ul>
+</li>
+<li><a href="e6.html">Epreuve E6</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+<main class="veille-page">
+
+<section class="veille-hero reveal">
+<div class="veille-badge">
+<i class="fa-solid fa-shield-halved"></i>
+Sujet de veille : Cybersécurité
+</div>
+
+<h1>Veille technologique</h1>
+
+<p>
+Dans le cadre de ma formation en BTS SIO option SISR, j’ai choisi de réaliser ma veille technologique
+sur la cybersécurité des infrastructures réseau, un domaine essentiel pour protéger les systèmes,
+les services et les données.
+</p>
+</section>
+
+<section class="veille-summary reveal">
+<div class="summary-card">
+<i class="fa-solid fa-lock"></i>
+<h3>Définition</h3>
+</div>
+
+<div class="summary-card">
+<i class="fa-solid fa-building-shield"></i>
+<h3>Usages</h3>
+</div>
+
+<div class="summary-card">
+<i class="fa-solid fa-toolbox"></i>
+<h3>Outils</h3>
+</div>
+
+<div class="summary-card">
+<i class="fa-solid fa-bookmark"></i>
+<h3>Sources</h3>
+</div>
+</section>
+
+<section class="veille-section reveal">
+<h2>Qu’est-ce que la cybersécurité ?</h2>
+<p>
+La cybersécurité désigne l’ensemble des méthodes, outils et bonnes pratiques permettant de protéger
+les systèmes informatiques, les réseaux et les données contre les attaques, les intrusions
+et les logiciels malveillants.
+</p>
+<p>
+Elle repose principalement sur trois objectifs essentiels :
+</p>
+<ul>
+<li><strong>La confidentialité</strong> : protéger l’accès aux données</li>
+<li><strong>L’intégrité</strong> : garantir que les informations ne soient pas modifiées de manière non autorisée</li>
+<li><strong>La disponibilité</strong> : assurer que les services restent accessibles lorsque cela est nécessaire</li>
+</ul>
+</section>
+
+<section class="veille-section reveal">
+<h2>Dans quelles situations l’utilise-t-on ?</h2>
+<p>
+La cybersécurité est utilisée dans de nombreuses situations du quotidien informatique.
+Elle permet de limiter les risques et de sécuriser les infrastructures.
+</p>
+
+<div class="veille-grid">
+<div class="veille-card">
+<i class="fa-solid fa-network-wired"></i>
+<h3>Protection du réseau</h3>
+<p>
+Sécuriser les accès au réseau, filtrer les communications et empêcher les connexions non autorisées.
+</p>
+</div>
+
+<div class="veille-card">
+<i class="fa-solid fa-server"></i>
+<h3>Sécurisation des serveurs</h3>
+<p>
+Protéger les services, limiter les accès et renforcer la fiabilité de l’infrastructure.
+</p>
+</div>
+
+<div class="veille-card">
+<i class="fa-solid fa-database"></i>
+<h3>Protection des données</h3>
+<p>
+Préserver les informations sensibles contre les pertes, les vols ou les modifications frauduleuses.
+</p>
+</div>
+
+<div class="veille-card">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<h3>Prévention des menaces</h3>
+<p>
+Réduire les effets des virus, ransomwares, attaques réseau ou tentatives de phishing.
+</p>
+</div>
+</div>
+</section>
+
+<section class="veille-section reveal">
+<h2>Quelques outils utilisés en cybersécurité</h2>
+<p>
+Pour renforcer la sécurité d’un système d’information, plusieurs solutions peuvent être utilisées.
+Elles sont complémentaires et participent à la protection globale de l’infrastructure.
+</p>
+
+<div class="veille-grid">
+<div class="veille-card">
+<i class="fa-solid fa-fire"></i>
+<h3>Pare-feu</h3>
+<p>
+Il filtre les connexions réseau et bloque les accès non autorisés.
+</p>
+</div>
+
+<div class="veille-card">
+<i class="fa-solid fa-bug-slash"></i>
+<h3>Antivirus / Antimalware</h3>
+<p>
+Ils détectent et suppriment les logiciels malveillants présents sur les postes ou serveurs.
+</p>
+</div>
+
+<div class="veille-card">
+<i class="fa-solid fa-eye"></i>
+<h3>IDS / IPS</h3>
+<p>
+Ces outils servent à détecter ou empêcher certaines attaques sur le réseau.
+</p>
+</div>
+
+<div class="veille-card">
+<i class="fa-solid fa-chart-line"></i>
+<h3>Supervision</h3>
+<p>
+Ils permettent de surveiller les serveurs et services pour repérer rapidement un incident.
+</p>
+</div>
+
+<div class="veille-card">
+<i class="fa-solid fa-hard-drive"></i>
+<h3>Sauvegarde</h3>
+<p>
+Elle permet de restaurer les données après une panne, une erreur ou une attaque.
+</p>
+</div>
+
+<div class="veille-card">
+<i class="fa-solid fa-shield"></i>
+<h3>pfSense</h3>
+<p>
+Solution de pare-feu que j’ai pu utiliser pour sécuriser les accès réseau dans mes activités.
+</p>
+</div>
+</div>
+</section>
+
+<section class="veille-section reveal">
+<h2>Les outils que j’utilise pour faire ma veille</h2>
+<p>
+Pour suivre l’actualité du domaine et enrichir mes connaissances, j’utilise plusieurs sources
+simples et accessibles.
+</p>
+
+<div class="sources-grid">
+<div class="source-card">
+<i class="fa-brands fa-discord"></i>
+<h3>Discord</h3>
+<p>
+Discord me permet de suivre des communautés informatiques et cybersécurité,
+avec des échanges rapides, des conseils et des retours d’expérience.
+</p>
+</div>
+
+<div class="source-card">
+<i class="fa-brands fa-youtube"></i>
+<h3>YouTube</h3>
+<p>
+YouTube me permet de découvrir des vidéos explicatives, des démonstrations
+et des présentations de cas concrets ou d’outils.
+</p>
+</div>
+
+<div class="source-card">
+<i class="fa-solid fa-newspaper"></i>
+<h3>IT-Connect</h3>
+<p>
+IT-Connect propose des articles, tutoriels et actualités sur l’administration système,
+le réseau et la cybersécurité.
+</p>
+</div>
+</div>
+</section>
+
+<section class="veille-conclusion reveal">
+<h2>Conclusion</h2>
+<p>
+La cybersécurité est aujourd’hui un domaine indispensable dans l’informatique.
+Elle permet de protéger les infrastructures, les utilisateurs et les données face aux menaces numériques.
+</p>
+<p>
+Grâce à cette veille technologique, je peux suivre l’évolution des risques,
+découvrir de nouveaux outils et approfondir mes connaissances dans un domaine essentiel du BTS SIO SISR.
+</p>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="footer-glow-line"></div>
+
+<div class="footer-container">
+<div class="footer-column">
+<h3>Portfolio BTS SIO</h3>
+<p>
+Étudiant en BTS SIO option SISR, je présente ici mes projets, mes compétences et les réalisations
+effectuées dans le cadre de ma formation.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>Navigation</h3>
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="parc.html">Gestion de parc</a></li>
+<li><a href="veille.html">Veille technologique</a></li>
+<li><a href="e5.html">Épreuve E5</a></li>
+<li><a href="e6.html">Épreuve E6</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+<div class="footer-column">
+<h3>Contact</h3>
+<p class="footer-contact"><i class="fa-solid fa-envelope"></i> tonmail@example.com</p>
+<p class="footer-contact"><i class="fa-brands fa-github"></i> github.com/tonprofil</p>
+<p class="footer-contact"><i class="fa-solid fa-location-dot"></i> France</p>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Portfolio BTS SIO — Tous droits réservés</p>
+</div>
+</footer>
+
+<script src="js/menu.js"></script>
+<script src="js/network-bg.js"></script>
+<script src="js/reveal.js"></script>
+
+</body>
+</html>

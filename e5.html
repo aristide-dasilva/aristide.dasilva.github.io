@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Épreuve E5 - Portfolio BTS SIO</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+.e5-page{
+max-width:1100px;
+margin:0 auto;
+padding:120px 20px 80px;
+position:relative;
+z-index:2;
+}
+
+.e5-hero{
+text-align:center;
+margin-bottom:60px;
+}
+
+.e5-badge{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:10px 18px;
+margin-bottom:26px;
+border-radius:999px;
+background:rgba(22,27,34,0.85);
+border:1px solid rgba(88,166,255,0.22);
+color:#dbeafe;
+font-size:0.95rem;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.06),
+0 8px 24px rgba(0,0,0,0.18);
+backdrop-filter:blur(6px);
+}
+
+.e5-badge i{
+color:#58a6ff;
+}
+
+.e5-hero h1{
+font-size:4rem;
+margin-bottom:22px;
+color:#58a6ff;
+text-shadow:0 0 18px rgba(88,166,255,0.10);
+}
+
+.e5-hero p{
+max-width:820px;
+margin:0 auto;
+font-size:1.15rem;
+line-height:1.9;
+color:#b8c1cc;
+}
+
+.e5-intro{
+background:linear-gradient(135deg, rgba(16,75,141,0.20), rgba(31,111,235,0.14));
+border:1px solid rgba(88,166,255,0.24);
+border-radius:24px;
+padding:34px;
+margin-bottom:45px;
+box-shadow:0 12px 30px rgba(0,0,0,0.20);
+}
+
+.e5-intro h2{
+font-size:2rem;
+margin-bottom:16px;
+color:#79c0ff;
+}
+
+.e5-intro p{
+font-size:1.05rem;
+line-height:1.9;
+color:#d0d7de;
+margin:0 0 14px 0;
+}
+
+.e5-grid{
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:25px;
+margin-bottom:45px;
+}
+
+.e5-card{
+display:block;
+position:relative;
+overflow:hidden;
+text-decoration:none;
+color:inherit;
+background:linear-gradient(180deg, rgba(22,27,34,0.96), rgba(13,17,23,0.96));
+border:1px solid #30363d;
+border-radius:24px;
+padding:32px;
+transition:0.3s;
+box-shadow:0 10px 26px rgba(0,0,0,0.18);
+}
+
+.e5-card::before{
+content:"";
+position:absolute;
+top:-40%;
+left:-40%;
+width:80%;
+height:180%;
+background:linear-gradient(
+120deg,
+transparent 0%,
+rgba(255,255,255,0.03) 45%,
+rgba(255,255,255,0.06) 50%,
+rgba(255,255,255,0.03) 55%,
+transparent 100%
+);
+transform:rotate(12deg);
+transition:transform 0.8s ease;
+pointer-events:none;
+}
+
+.e5-card:hover::before{
+transform:translateX(180%) rotate(12deg);
+}
+
+.e5-card:hover{
+transform:translateY(-6px);
+border-color:#58a6ff;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.22),
+0 0 20px rgba(88,166,255,0.09),
+0 14px 34px rgba(0,0,0,0.28);
+}
+
+.e5-card i{
+font-size:2rem;
+color:#58a6ff;
+margin-bottom:16px;
+display:block;
+}
+
+.e5-card h3{
+font-size:1.45rem;
+margin-bottom:14px;
+color:#f0f6fc;
+line-height:1.35;
+}
+
+.e5-card p{
+font-size:1rem;
+line-height:1.8;
+color:#b8c1cc;
+margin:0;
+}
+
+.e5-card span{
+display:inline-block;
+margin-top:16px;
+font-size:0.95rem;
+color:#58a6ff;
+}
+
+.e5-bottom{
+background:rgba(22,27,34,0.88);
+border:1px solid #30363d;
+border-radius:24px;
+padding:30px;
+box-shadow:0 10px 26px rgba(0,0,0,0.16);
+}
+
+.e5-bottom h2{
+font-size:1.8rem;
+margin-bottom:14px;
+color:#58a6ff;
+}
+
+.e5-bottom p{
+font-size:1.03rem;
+line-height:1.85;
+color:#b8c1cc;
+margin:0;
+}
+
+.e5-stats{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:18px;
+margin-top:34px;
+}
+
+.e5-stat-card{
+min-width:140px;
+padding:18px 22px;
+border-radius:18px;
+background:linear-gradient(180deg, rgba(22,27,34,0.94), rgba(13,17,23,0.94));
+border:1px solid #30363d;
+box-shadow:0 10px 24px rgba(0,0,0,0.18);
+text-align:center;
+transition:0.3s;
+}
+
+.e5-stat-card:hover{
+transform:translateY(-4px);
+border-color:#58a6ff;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.18),
+0 0 18px rgba(88,166,255,0.08),
+0 12px 28px rgba(0,0,0,0.24);
+}
+
+.e5-stat-number{
+display:block;
+font-size:1.8rem;
+font-weight:700;
+color:#58a6ff;
+margin-bottom:6px;
+}
+
+.e5-stat-label{
+display:block;
+font-size:0.95rem;
+color:#b8c1cc;
+}
+
+@media (max-width:900px){
+.e5-grid{
+grid-template-columns:1fr;
+}
+
+.e5-hero h1{
+font-size:3rem;
+}
+
+.e5-intro,
+.e5-card,
+.e5-bottom{
+padding:26px;
+}
+}
+
+@media (max-width:600px){
+.e5-page{
+padding:100px 20px 60px;
+}
+
+.e5-hero h1{
+font-size:2.5rem;
+}
+
+.e5-hero p{
+font-size:1.04rem;
+}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="network-bg"></canvas>
+
+<header>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<div class="header-center">
+<a href="index.html" class="home-btn">
+<i class="fa-solid fa-house"></i> Accueil
+</a>
+<div class="header-title">Portfolio BTS SIO</div>
+</div>
+
+</header>
+
+<div class="menu" id="menu">
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="parc.html">Gestion de parc</a></li>
+<li><a href="veille.html">Veille technologique</a></li>
+<li class="submenu-parent">
+<div class="submenu-head">
+<a href="e5.html" class="submenu-title">Epreuve E5</a>
+<i class="fa-solid fa-chevron-down submenu-arrow" onclick="toggleSubmenu()"></i>
+</div>
+<ul class="submenu" id="submenu-e5">
+<li><a href="e5-patrimoine.html">Gérer le patrimoine informatique</a></li>
+<li><a href="e5-support.html">Répondre aux incidents et aux demandes d’assistance</a></li>
+<li><a href="e5-developpement.html">Développer la présence en ligne</a></li>
+<li><a href="e5-modeprojet.html">Travailler en mode projet</a></li>
+<li><a href="e5-dispo-utilisateurs.html">Mettre à disposition des utilisateurs un service</a></li>
+<li><a href="e5-dev-pro.html">Organiser son développement professionnel</a></li>
+</ul>
+</li>
+<li><a href="e6.html">Epreuve E6</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+<main class="e5-page">
+
+<section class="e5-hero reveal">
+<div class="e5-badge">
+<i class="fa-solid fa-layer-group"></i>
+BTS SIO • Option SISR
+</div>
+
+<h1>Épreuve E5</h1>
+
+<p>
+Cette page présente les compétences du référentiel mobilisées à travers les activités réalisées
+dans le cadre de ma formation en BTS SIO option SISR.
+</p>
+
+<div class="e5-stats">
+  <div class="e5-stat-card">
+    <span class="e5-stat-number">6</span>
+    <span class="e5-stat-label">Compétences</span>
+  </div>
+
+  <div class="e5-stat-card">
+    <span class="e5-stat-number">6</span>
+    <span class="e5-stat-label">Catégories</span>
+  </div>
+
+  <div class="e5-stat-card">
+    <span class="e5-stat-number">18</span>
+    <span class="e5-stat-label">Activités</span>
+  </div>
+</div>
+</section>
+
+<section class="e5-intro reveal">
+<h2>Présentation de l’épreuve</h2>
+<p>
+L’épreuve E5 permet de mettre en valeur les compétences professionnelles développées pendant la formation.
+Elle s’appuie sur des activités concrètes réalisées dans les domaines des systèmes, des réseaux,
+du support, de la gestion de services et du développement professionnel.
+</p>
+<p>
+Chaque rubrique ci-dessous regroupe les activités correspondant à une compétence du référentiel.
+</p>
+</section>
+
+<section class="e5-grid reveal">
+
+<a href="e5-patrimoine.html" class="e5-card">
+<i class="fa-solid fa-desktop"></i>
+<h3>Gérer le patrimoine informatique</h3>
+<p>
+Cette rubrique regroupe les activités liées à l’inventaire, à l’organisation et au suivi des équipements
+et services de l’infrastructure informatique.
+</p>
+<span>Voir les activités</span>
+</a>
+
+<a href="e5-support.html" class="e5-card">
+<i class="fa-solid fa-headset"></i>
+<h3>Répondre aux incidents et aux demandes d’assistance</h3>
+<p>
+Cette catégorie présente les activités de support, de dépannage et de traitement des demandes
+effectuées auprès des utilisateurs.
+</p>
+<span>Voir les activités</span>
+</a>
+
+<a href="e5-developpement.html" class="e5-card">
+<i class="fa-solid fa-globe"></i>
+<h3>Développer la présence en ligne de l’organisation</h3>
+<p>
+Cette partie regroupe les travaux liés à la visibilité en ligne, à la communication numérique
+et aux outils web mis en place.
+</p>
+<span>Voir les activités</span>
+</a>
+
+<a href="e5-modeprojet.html" class="e5-card">
+<i class="fa-solid fa-diagram-project"></i>
+<h3>Travailler en mode projet</h3>
+<p>
+Cette rubrique met en avant les activités réalisées dans une logique d’organisation,
+de planification et de conduite de projet.
+</p>
+<span>Voir les activités</span>
+</a>
+
+<a href="e5-dispo-utilisateurs.html" class="e5-card">
+<i class="fa-solid fa-laptop-code"></i>
+<h3>Mettre à disposition des utilisateurs un service informatique</h3>
+<p>
+Cette catégorie présente les activités liées au déploiement, à la configuration
+et à la mise à disposition de services pour les utilisateurs.
+</p>
+<span>Voir les activités</span>
+</a>
+
+<a href="e5-dev-pro.html" class="e5-card">
+<i class="fa-solid fa-book-open-reader"></i>
+<h3>Organiser son développement professionnel</h3>
+<p>
+Cette rubrique regroupe les éléments montrant ma capacité à développer mes compétences,
+à effectuer une veille et à faire évoluer mes connaissances professionnelles.
+</p>
+<span>Voir les activités</span>
+</a>
+
+</section>
+
+<section class="e5-bottom reveal">
+<h2>Organisation des activités</h2>
+<p>
+Chaque catégorie renvoie vers une page dédiée regroupant les fiches d’activités correspondantes.
+Cette organisation permet de relier plus facilement les réalisations concrètes aux compétences attendues dans le référentiel du BTS SIO.
+</p>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="footer-glow-line"></div>
+
+<div class="footer-container">
+<div class="footer-column">
+<h3>Portfolio BTS SIO</h3>
+<p>
+Étudiant en BTS SIO option SISR, je présente ici mes projets, mes compétences et les réalisations
+effectuées dans le cadre de ma formation.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>Navigation</h3>
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="parc.html">Gestion de parc</a></li>
+<li><a href="veille.html">Veille technologique</a></li>
+<li><a href="e5.html">Épreuve E5</a></li>
+<li><a href="e6.html">Épreuve E6</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+<div class="footer-column">
+<h3>Contact</h3>
+<p class="footer-contact"><i class="fa-solid fa-envelope"></i> tonmail@example.com</p>
+<p class="footer-contact"><i class="fa-brands fa-github"></i> github.com/tonprofil</p>
+<p class="footer-contact"><i class="fa-solid fa-location-dot"></i> France</p>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Portfolio BTS SIO — Tous droits réservés</p>
+</div>
+</footer>
+
+<script src="js/menu.js"></script>
+<script src="js/network-bg.js"></script>
+<script src="js/reveal.js"></script>
+
+</body>
+</html>

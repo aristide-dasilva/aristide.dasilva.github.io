@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Portfolio BTS SIO</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+.contact-page{
+max-width:1100px;
+margin:0 auto;
+padding:120px 20px 80px;
+position:relative;
+z-index:2;
+}
+
+.contact-hero{
+text-align:center;
+margin-bottom:70px;
+}
+
+.contact-badge{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:10px 18px;
+margin-bottom:26px;
+border-radius:999px;
+background:rgba(22,27,34,0.85);
+border:1px solid rgba(88,166,255,0.22);
+color:#dbeafe;
+font-size:0.95rem;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.06),
+0 8px 24px rgba(0,0,0,0.18);
+backdrop-filter:blur(6px);
+}
+
+.contact-badge i{
+color:#58a6ff;
+}
+
+.contact-hero h1{
+font-size:4.2rem;
+margin-bottom:22px;
+color:#58a6ff;
+text-shadow:0 0 18px rgba(88,166,255,0.10);
+}
+
+.contact-hero p{
+max-width:820px;
+margin:0 auto;
+font-size:1.18rem;
+line-height:1.9;
+color:#b8c1cc;
+}
+
+.contact-main-card{
+position:relative;
+background:linear-gradient(180deg, rgba(22,27,34,0.96), rgba(13,17,23,0.96));
+border:1px solid #30363d;
+border-radius:28px;
+padding:45px;
+margin-bottom:45px;
+box-shadow:
+0 14px 40px rgba(0,0,0,0.30),
+0 0 0 1px rgba(88,166,255,0.04);
+overflow:hidden;
+}
+
+.contact-main-card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:1px;
+background:linear-gradient(90deg, transparent, rgba(88,166,255,0.9), transparent);
+box-shadow:0 0 12px rgba(88,166,255,0.35);
+}
+
+.contact-main-grid{
+display:grid;
+grid-template-columns:1.15fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.contact-intro h2{
+font-size:2.2rem;
+margin-bottom:18px;
+color:#58a6ff;
+}
+
+.contact-intro p{
+font-size:1.08rem;
+line-height:1.9;
+color:#b8c1cc;
+margin-bottom:15px;
+}
+
+.contact-pill-list{
+display:flex;
+flex-wrap:wrap;
+gap:14px;
+margin-top:24px;
+}
+
+.contact-pill{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:12px 16px;
+border-radius:14px;
+background:rgba(13,17,23,0.85);
+border:1px solid #30363d;
+color:#d0d7de;
+font-size:0.96rem;
+box-shadow:0 8px 18px rgba(0,0,0,0.16);
+}
+
+.contact-pill i{
+color:#58a6ff;
+}
+
+.contact-visual{
+display:flex;
+justify-content:center;
+}
+
+.contact-visual-card{
+width:100%;
+max-width:360px;
+min-height:320px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:rgba(13,17,23,0.92);
+border:1px solid #30363d;
+border-radius:24px;
+padding:32px;
+box-shadow:
+0 12px 32px rgba(0,0,0,0.24),
+0 0 20px rgba(88,166,255,0.05);
+transition:0.3s;
+}
+
+.contact-visual-card:hover{
+transform:translateY(-6px);
+border-color:#58a6ff;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.20),
+0 0 20px rgba(88,166,255,0.08),
+0 14px 32px rgba(0,0,0,0.30);
+}
+
+.contact-visual-card i{
+font-size:4rem;
+color:#58a6ff;
+margin-bottom:22px;
+text-shadow:0 0 18px rgba(88,166,255,0.20);
+}
+
+.contact-visual-card h3{
+font-size:1.5rem;
+color:#f0f6fc;
+margin-bottom:12px;
+}
+
+.contact-visual-card p{
+font-size:1rem;
+line-height:1.8;
+color:#b8c1cc;
+}
+
+.contact-cards{
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:25px;
+margin-bottom:45px;
+}
+
+.contact-card{
+display:block;
+background:linear-gradient(180deg, rgba(22,27,34,0.96), rgba(13,17,23,0.96));
+border:1px solid #30363d;
+border-radius:22px;
+padding:30px;
+text-decoration:none;
+color:inherit;
+transition:0.3s;
+box-shadow:0 10px 26px rgba(0,0,0,0.18);
+position:relative;
+overflow:hidden;
+}
+
+.contact-card::before{
+content:"";
+position:absolute;
+top:-40%;
+left:-40%;
+width:80%;
+height:180%;
+background:linear-gradient(
+120deg,
+transparent 0%,
+rgba(255,255,255,0.03) 45%,
+rgba(255,255,255,0.06) 50%,
+rgba(255,255,255,0.03) 55%,
+transparent 100%
+);
+transform:rotate(12deg);
+transition:transform 0.8s ease;
+pointer-events:none;
+}
+
+.contact-card:hover::before{
+transform:translateX(180%) rotate(12deg);
+}
+
+.contact-card:hover{
+transform:translateY(-6px);
+border-color:#58a6ff;
+box-shadow:
+0 0 0 1px rgba(88,166,255,0.22),
+0 0 20px rgba(88,166,255,0.09),
+0 14px 34px rgba(0,0,0,0.28);
+}
+
+.contact-card i{
+font-size:2rem;
+color:#58a6ff;
+margin-bottom:16px;
+display:block;
+}
+
+.contact-card h3{
+font-size:1.35rem;
+margin-bottom:12px;
+color:#f0f6fc;
+}
+
+.contact-card p{
+font-size:1rem;
+line-height:1.75;
+color:#b8c1cc;
+margin:0;
+word-break:break-word;
+}
+
+.contact-card span{
+display:inline-block;
+margin-top:14px;
+font-size:0.95rem;
+color:#58a6ff;
+}
+
+.contact-bottom{
+background:linear-gradient(135deg, rgba(16,75,141,0.20), rgba(31,111,235,0.14));
+border:1px solid rgba(88,166,255,0.26);
+border-radius:24px;
+padding:32px;
+box-shadow:0 12px 30px rgba(0,0,0,0.20);
+}
+
+.contact-bottom h2{
+font-size:1.9rem;
+margin-bottom:16px;
+color:#79c0ff;
+}
+
+.contact-bottom p{
+font-size:1.05rem;
+line-height:1.9;
+color:#d0d7de;
+margin:0;
+}
+
+@media (max-width:950px){
+.contact-main-grid{
+grid-template-columns:1fr;
+}
+
+.contact-cards{
+grid-template-columns:1fr;
+}
+
+.contact-hero h1{
+font-size:3rem;
+}
+
+.contact-main-card{
+padding:30px;
+}
+}
+
+@media (max-width:600px){
+.contact-page{
+padding:100px 20px 60px;
+}
+
+.contact-hero h1{
+font-size:2.5rem;
+}
+
+.contact-hero p{
+font-size:1.04rem;
+}
+
+.contact-intro h2{
+font-size:1.8rem;
+}
+
+.contact-main-card,
+.contact-bottom,
+.contact-card{
+padding:24px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="network-bg"></canvas>
+
+<header>
+    
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    
+        <div class="header-center">
+            <a href="index.html" class="home-btn">
+                <i class="fa-solid fa-house"></i> Accueil
+            </a>
+    
+            <div class="header-title">Portfolio BTS SIO</div>
+        </div>
+    
+    </header>
+
+<div class="menu" id="menu">
+
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="parc.html">Gestion de parc</a></li>
+<li><a href="veille.html">Veille technologique</a></li>
+<li class="submenu-parent">
+
+    <div class="submenu-head">
+        <a href="e5.html" class="submenu-title">Epreuve E5</a>
+        <i class="fa-solid fa-chevron-down submenu-arrow" onclick="toggleSubmenu()"></i>
+    </div>
+
+    <ul class="submenu" id="submenu-e5">
+        <li><a href="e5-patrimoine.html">Gérer le patrimoine informatique</a></li>
+        <li><a href="e5-support.html">Répondre aux incidents et aux demandes d’assistance</a></li>
+        <li><a href="e5-developpement.html">Développer la présence en ligne</a></li>
+        <li><a href="e5-modeprojet.html">Travailler en mode projet</a></li>
+        <li><a href="e5-dispo-utilisateurs.html">Mettre à disposition des utilisateurs un service</a></li>
+        <li><a href="e5-dev-pro.html">Organiser son développement professionnel</a></li>
+    </ul>
+
+</li>
+<li><a href="e6.html">Epreuve E6</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</div>
+
+<main class="contact-page">
+
+<section class="contact-hero">
+<div class="contact-badge">
+<i class="fa-solid fa-address-card"></i>
+Entrer en contact
+</div>
+
+<h1>Contact</h1>
+
+<p>
+Retrouvez ici mes informations de contact pour toute demande d’échange professionnel,
+de renseignement complémentaire ou de prise de contact dans le cadre de ma formation
+et de mon portfolio BTS SIO.
+</p>
+</section>
+
+<section class="contact-main-card">
+<div class="contact-main-grid">
+
+<div class="contact-intro">
+<h2>Un échange simple et professionnel</h2>
+
+<p>
+Cette page me permet de centraliser les principaux moyens de contact liés à mon portfolio.
+Vous pouvez me joindre pour toute question concernant mes projets, mes compétences
+ou les réalisations présentées sur ce site.
+</p>
+
+<p>
+Je reste disponible pour échanger autour de mon parcours en BTS SIO option SISR,
+de mes travaux en administration système et réseau, ainsi que de mes projets liés
+à la cybersécurité, à la supervision et à la gestion d’infrastructure.
+</p>
+
+<div class="contact-pill-list">
+<div class="contact-pill">
+<i class="fa-solid fa-server"></i>
+Systèmes
+</div>
+<div class="contact-pill">
+<i class="fa-solid fa-network-wired"></i>
+Réseaux
+</div>
+<div class="contact-pill">
+<i class="fa-solid fa-shield-halved"></i>
+Cybersécurité
+</div>
+</div>
+</div>
+
+<div class="contact-visual">
+<div class="contact-visual-card">
+<i class="fa-solid fa-paper-plane"></i>
+<h3>Disponible pour échanger</h3>
+<p>
+N’hésitez pas à me contacter pour toute question sur mon portfolio,
+mes projets ou mon parcours en BTS SIO SISR.
+</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="contact-cards">
+
+<a href="mailto:tonmail@example.com" class="contact-card">
+<i class="fa-solid fa-envelope"></i>
+<h3>Email</h3>
+<p>tonmail@example.com</p>
+<span>Envoyer un message</span>
+</a>
+
+<a href="https://github.com/tonprofil" target="_blank" class="contact-card">
+<i class="fa-brands fa-github"></i>
+<h3>GitHub</h3>
+<p>github.com/tonprofil</p>
+<span>Voir mon profil</span>
+</a>
+
+<div class="contact-card">
+<i class="fa-solid fa-location-dot"></i>
+<h3>Localisation</h3>
+<p>France</p>
+<span>Disponibilité à préciser selon le besoin</span>
+</div>
+
+</section>
+
+<section class="contact-bottom">
+<h2>Restons en contact</h2>
+<p>
+Ce portfolio a pour objectif de présenter mon parcours, mes compétences et les projets
+réalisés durant ma formation. Cette page permet d’apporter un point d’entrée clair et professionnel
+pour toute personne souhaitant en savoir plus sur mon profil.
+</p>
+</section>
+
+</main>
+
+<footer class="site-footer">
+
+<div class="footer-glow-line"></div>
+
+<div class="footer-container">
+
+<div class="footer-column">
+<h3>Portfolio BTS SIO</h3>
+<p>
+Étudiant en BTS SIO option SISR (Solutions d’Infrastructure, Systèmes et Réseaux).
+Je développe des compétences en administration système, réseau et cybersécurité
+à travers différents projets réalisés en formation.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>Navigation</h3>
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="parc.html">Gestion de parc</a></li>
+<li><a href="veille.html">Veille technologique</a></li>
+<li><a href="e5.html">Épreuve E5</a></li>
+<li><a href="e6.html">Épreuve E6</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+<div class="footer-column">
+<h3>Contact</h3>
+<p class="footer-contact"><i class="fa-solid fa-envelope"></i> tonmail@example.com</p>
+<p class="footer-contact"><i class="fa-brands fa-github"></i> github.com/tonprofil</p>
+<p class="footer-contact"><i class="fa-solid fa-location-dot"></i> France</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Portfolio BTS SIO — Tous droits réservés</p>
+</div>
+
+</footer>
+
+<script src="js/menu.js"></script>
+<script src="js/network-bg.js"></script>
+
+</body>
+</html>
