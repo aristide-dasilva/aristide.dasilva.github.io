@@ -175,6 +175,113 @@ margin-top:15px;
 
 .btn:hover{
 background:#4070c0;
+transform:translateY(-4px);
+
+box-shadow:0 12px 28px rgba(31,111,235,0.5);
+
+background:linear-gradient(135deg,#79c0ff,#388bfd);
+}
+
+.btn-cv{
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:14px 28px;
+
+font-size:1.05rem;
+font-weight:500;
+
+text-decoration:none;
+color:rgb(255, 255, 255);
+
+background:linear-gradient(135deg,#104b8d,#1f6feb);
+
+border-radius:12px;
+
+box-shadow:0 8px 20px rgba(31,111,235,0.35);
+
+transition:all 0.3s ease;
+}
+
+.btn-cv:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 12px 28px rgba(31,111,235,0.5);
+
+background:linear-gradient(135deg,#79c0ff,#388bfd);
+
+}
+
+.btn-cv i{
+font-size:1.1rem;
+}
+
+/* AUTH MODAL */
+.auth-overlay{
+   position:fixed;
+   inset:0;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   background:rgba(13,17,23,0.86);
+   z-index:30000;
+}
+
+.auth-modal{
+   width:min(520px, 92%);
+   background:linear-gradient(180deg, rgba(22,27,34,0.96), rgba(13,17,23,0.96));
+   border:1px solid #30363d;
+   border-radius:18px;
+   padding:28px;
+   box-shadow:0 18px 40px rgba(0,0,0,0.6);
+   text-align:center;
+}
+
+.auth-modal h2{
+   color:#58a6ff;
+   margin-bottom:10px;
+   font-size:1.6rem;
+}
+
+.auth-modal p{
+   color:#b8c1cc;
+   margin-bottom:18px;
+}
+
+.auth-input{
+   width:100%;
+   padding:12px 14px;
+   border-radius:10px;
+   border:1px solid #30363d;
+   background:#0d1117;
+   color:#dbeafe;
+   margin-bottom:14px;
+   font-size:1rem;
+}
+
+.auth-actions{
+   display:flex;
+   gap:12px;
+   justify-content:center;
+   flex-wrap:wrap;
+}
+
+.auth-cancel{
+   display:inline-block;
+   padding:10px 18px;
+   border-radius:10px;
+   background:transparent;
+   color:#c9d1d9;
+   border:1px solid #30363d;
+   text-decoration:none;
+}
+
+.auth-error{
+   color:#ff7b7b;
+   font-size:0.95rem;
+   margin-top:8px;
 }
 
 /* CARDS DES PAGES */

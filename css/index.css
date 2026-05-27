@@ -6,7 +6,7 @@ display:grid;
 grid-template-columns:1.1fr 1fr;
 align-items:center;
 gap:80px;
-padding:140px 20px 100px;
+padding:10px 20px 100px;
 max-width:1200px;
 margin:0 auto;
 position:relative;

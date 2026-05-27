@@ -247,6 +247,20 @@ background:linear-gradient(180deg, rgba(18,24,32,0.95), rgba(22,27,34,0.82));
 
 <canvas id="network-bg"></canvas>
 
+<!-- Authentication overlay -->
+<div id="auth-overlay" class="auth-overlay" aria-hidden="false">
+    <div class="auth-modal" role="dialog" aria-labelledby="auth-title">
+        <h2 id="auth-title">Accès protégé • Épreuve E6</h2>
+        <p>Entrez le mot de passe pour accéder au contenu de cette page.</p>
+        <input id="auth-password" class="auth-input" type="password" placeholder="Mot de passe" aria-label="Mot de passe">
+        <div class="auth-actions">
+            <a id="auth-submit" href="#" class="btn-cv">Valider</a>
+            <a id="auth-cancel" href="index.html" class="auth-cancel">Retour</a>
+        </div>
+        <div id="auth-error" class="auth-error" aria-live="polite" style="display:none;"></div>
+    </div>
+</div>
+
 <header>
     
         <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -307,17 +321,19 @@ Option : <strong>SISR</strong>
 
 <section class="e6-section">
 <span class="e6-label">Situation professionnelle 1</span>  
-<h2>Infrastructure réseau et sécurisation avec pfSense</h2>
+<h2>Mise en place et configuration d’un Windows Server (AD, DNS, DHCP, GPO...)</h2>
 
 <p>
-Cette situation professionnelle porte sur la mise en place et la sécurisation d’une infrastructure réseau
-dans le contexte de l’entreprise CréaBois, avec l’utilisation de pfSense pour la gestion du pare-feu
-et du contrôle des accès réseau.
+Cette situation professionnelle concerne la mise en place et la configuration complète d'un serveur Windows Server
+au sein d'une infrastructure réseau. Elle couvre l'installation des services essentiels tels que l'Active Directory,
+le DNS et le DHCP, ainsi que la mise en place de stratégies de groupe (GPO) pour assurer une gestion centralisée
+et sécurisée du réseau.
 </p>
 
 <p>
-Elle présente le besoin initial, les choix réalisés, ainsi que les solutions mises en œuvre
-pour répondre aux contraintes techniques et de sécurité.
+Elle présente la démarche suivie pour mettre en place et configurer un Windows Server complet,
+les choix techniques effectués pour l'Active Directory, le DNS, le DHCP et les GPO,
+ainsi que les solutions mises en œuvre pour répondre aux contraintes d'infrastructure et de sécurité réseau.
 </p>
 
 <div class="e6-docs">
@@ -340,12 +356,12 @@ configuration, paramétrage et étapes de réalisation.</p>
 
 <section class="e6-section">
 <span class="e6-label">Situation professionnelle 2</span>
-<h2>Supervision des machines virtualisées avec Zabbix</h2>
+<h2>Supervision des machines physiques et virtuelles avec Zabbix</h2>
 
 
 <p>
 Cette situation professionnelle concerne la mise en place d’un serveur de supervision Zabbix
-sur machine virtuelle afin d’assurer la surveillance de l’ensemble des machines virtualisées.
+sur machine virtuelle afin d’assurer la surveillance de l’ensemble des machines physiques et virtuelles.
 </p>
 
 <p>
@@ -408,12 +424,11 @@ Je développe des compétences en administration système, réseau et cybersécu
 
 <p class="footer-contact">
 <i class="fa-solid fa-envelope"></i>
-tonmail@example.com
-</p>
+ari23.ds@gmail.com</p>
 
 <p class="footer-contact">
 <i class="fa-brands fa-github"></i>
-github.com/tonprofil
+github.com/aristide-dasilva
 </p>
 
 <p class="footer-contact">
@@ -433,6 +448,57 @@ France
 
 <script src="js/menu.js"></script>
 <script src="js/network-bg.js"></script>
+
+<script>
+(function(){
+    const KEY = 'portfolio_auth_e6';
+    const PASSWORD = 'Not24getE6';
+    const overlay = document.getElementById('auth-overlay');
+    const input = document.getElementById('auth-password');
+    const submit = document.getElementById('auth-submit');
+    const cancel = document.getElementById('auth-cancel');
+    const error = document.getElementById('auth-error');
+
+    function hideOverlay(){
+        if(!overlay) return;
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden','true');
+    }
+
+    function showOverlay(){
+        if(!overlay) return;
+        overlay.style.display = 'flex';
+        overlay.setAttribute('aria-hidden','false');
+        input.focus();
+    }
+
+    if(sessionStorage.getItem(KEY) === '1'){
+        hideOverlay();
+        return;
+    }
+
+    showOverlay();
+
+    submit.addEventListener('click', function(e){
+        e.preventDefault();
+        const val = input.value || '';
+        if(val === PASSWORD){
+            sessionStorage.setItem(KEY,'1');
+            hideOverlay();
+        } else {
+            error.textContent = 'Mot de passe incorrect';
+            error.style.display = 'block';
+            input.value = '';
+            input.focus();
+        }
+    });
+
+    input.addEventListener('keydown', function(e){
+        if(e.key === 'Enter') submit.click();
+    });
+
+})();
+</script>
 
 </body>
 </html>

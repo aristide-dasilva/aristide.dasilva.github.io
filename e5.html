@@ -262,6 +262,20 @@ font-size:1.04rem;
 
 <canvas id="network-bg"></canvas>
 
+<!-- Authentication overlay -->
+<div id="auth-overlay" class="auth-overlay" aria-hidden="false">
+  <div class="auth-modal" role="dialog" aria-labelledby="auth-title">
+    <h2 id="auth-title">Accès protégé • Épreuve E5</h2>
+    <p>Entrez le mot de passe pour accéder au contenu de cette page.</p>
+    <input id="auth-password" class="auth-input" type="password" placeholder="Mot de passe" aria-label="Mot de passe">
+    <div class="auth-actions">
+      <a id="auth-submit" href="#" class="btn-cv">Valider</a>
+      <a id="auth-cancel" href="index.html" class="auth-cancel">Retour</a>
+    </div>
+    <div id="auth-error" class="auth-error" aria-live="polite" style="display:none;"></div>
+  </div>
+</div>
+
 <header>
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -332,6 +346,12 @@ dans le cadre de ma formation en BTS SIO option SISR.
 </div>
 </section>
 
+<div style="text-align: center; margin-top: 30px;">
+  <a href="documents/DA SILVA Aristide - Tableau de synthèse - Epreuve E5 - BTS SIO.pdf" class="btn-cv reveal" target="_blank">
+    <i class="fa-solid fa-table"></i> Tableau de Synthèse
+  </a>
+</div>
+<br><br>
 <section class="e5-intro reveal">
 <h2>Présentation de l’épreuve</h2>
 <p>
@@ -444,8 +464,8 @@ effectuées dans le cadre de ma formation.
 
 <div class="footer-column">
 <h3>Contact</h3>
-<p class="footer-contact"><i class="fa-solid fa-envelope"></i> tonmail@example.com</p>
-<p class="footer-contact"><i class="fa-brands fa-github"></i> github.com/tonprofil</p>
+<p class="footer-contact"><i class="fa-solid fa-envelope"></i> ari23.ds@gmail.com</p>
+<p class="footer-contact"><i class="fa-brands fa-github"></i> github.com/aristide-dasilva</p>
 <p class="footer-contact"><i class="fa-solid fa-location-dot"></i> France</p>
 </div>
 </div>
@@ -458,6 +478,57 @@ effectuées dans le cadre de ma formation.
 <script src="js/menu.js"></script>
 <script src="js/network-bg.js"></script>
 <script src="js/reveal.js"></script>
+
+<script>
+(function(){
+  const KEY = 'portfolio_auth_e5';
+  const PASSWORD = 'Not24get';
+  const overlay = document.getElementById('auth-overlay');
+  const input = document.getElementById('auth-password');
+  const submit = document.getElementById('auth-submit');
+  const cancel = document.getElementById('auth-cancel');
+  const error = document.getElementById('auth-error');
+
+  function hideOverlay(){
+    if(!overlay) return;
+    overlay.style.display = 'none';
+    overlay.setAttribute('aria-hidden','true');
+  }
+
+  function showOverlay(){
+    if(!overlay) return;
+    overlay.style.display = 'flex';
+    overlay.setAttribute('aria-hidden','false');
+    input.focus();
+  }
+
+  if(sessionStorage.getItem(KEY) === '1'){
+    hideOverlay();
+    return;
+  }
+
+  showOverlay();
+
+  submit.addEventListener('click', function(e){
+    e.preventDefault();
+    const val = input.value || '';
+    if(val === PASSWORD){
+      sessionStorage.setItem(KEY,'1');
+      hideOverlay();
+    } else {
+      error.textContent = 'Mot de passe incorrect';
+      error.style.display = 'block';
+      input.value = '';
+      input.focus();
+    }
+  });
+
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter') submit.click();
+  });
+
+})();
+</script>
 
 </body>
 </html>
